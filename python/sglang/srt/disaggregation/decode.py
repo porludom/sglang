@@ -2168,7 +2168,7 @@ class SchedulerDisaggregationDecodeMixin:
         if self.conditional_agg_enabled:
             # Local-prefill reqs sit in waiting_queue; reuse the standard
             # prefill->decode scheduler for them alongside prebuilt reqs.
-            return self.get_next_batch_to_run()
+            return self.get_next_batch_to_run(running_batch=running_batch, last_batch=self.last_batch)
 
         # Schedule decode batch
         if running_batch.is_empty():
